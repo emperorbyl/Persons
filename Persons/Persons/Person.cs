@@ -8,24 +8,24 @@ namespace Persons
 {
     public class Person
     {
-        int objectId { get; set; }
-        string stateFileNumber { get; set; }
-        string socialSecurityNumber { get; set; }
-        string firstName { get; set; }
-        string middleName { get; set; }
-        string lastName { get; set; }
-        int birthYear { get; set; }
-        int birthMonth { get; set; }
-        int birthDay { get; set; }
-        string gender { get; set; }
-        string newbornScreeningNumber { get; set; }
-        string isPartOfMultipleBirth { get; set; }
-        int birthOrder { get; set; }
-        string birthCounty { get; set; }
-        string motherFirstName { get; set; }
-        string motherMiddleName { get; set; }
-        string motherLastName { get; set; }
-        string phone1 { get; set; }
-        string phone2 { get; set; }
+        public int objectId { get; set; }
+        public string stateFileNumber { get; set; }
+        public string socialSecurityNumber { get; set; }
+        public string firstName { get; set; }
+        public string middleName { get; set; }
+        public string lastName { get; set; }
+        public int birthYear { get; set; }
+        public int birthMonth { get; set; }
+        public int birthDay { get; set; }
+        public string gender { get; set; }
+        public string newbornScreeningNumber { get; set; }
+        public string isPartOfMultipleBirth { get; set; }
+        public int birthOrder { get; set; }
+        public string birthCounty { get; set; }
+        public string motherFirstName { get; set; }
+        public string motherMiddleName { get; set; }
+        public string motherLastName { get; set; }
+        public string phone1 { get; set; }
+        public string phone2 { get; set; }
     }
 }

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Persons
 {
-    class PersonMatcher
+    public class PersonMatcher
     {
-        private MatchPair match;
-        private ImporterExporter importExport;
-        string filename { get; set; }
-        string algorithmName { get; set; }
-        string outputFile { get; set; }
+        public MatchPair match;
+        public ImporterExporter importExport;
+        public string filename { get; set; }
+        public string algorithmName { get; set; }
+        public string outputFile { get; set; }
         
     }
 }

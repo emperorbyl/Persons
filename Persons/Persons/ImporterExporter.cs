@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persons
 {
-    abstract class ImporterExporter
+    public abstract class ImporterExporter
     {
         string name { get; set; }
         string description { get; set; }
