@@ -8,11 +8,21 @@ namespace Persons
 {
     public class PersonMatcher
     {
-        public MatchPair match;
+        public List<Person> personList;
+        public List<MatchPair> matchList;
         public ImporterExporter importExport;
         public string filename { get; set; }
         public string algorithmName { get; set; }
         public string outputFile { get; set; }
-        
+        public void Write()
+        {
+            importExport?.Write(matchList, filename);
+        }
+
+        public void Read()
+        {
+            importExport?.Read(personList, filename);
+        }
+
     }
 }

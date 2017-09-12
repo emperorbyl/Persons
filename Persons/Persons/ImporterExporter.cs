@@ -8,8 +8,8 @@ namespace Persons
 {
     public abstract class ImporterExporter
     {
-        string name { get; set; }
-        string description { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
         public abstract void Read(List<Person> context, string filename);
         public abstract void Write(List<MatchPair> context, string filename);
         protected string AppendExtension(string filename, string extension)

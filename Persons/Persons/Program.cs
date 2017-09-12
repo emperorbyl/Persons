@@ -8,6 +8,7 @@ namespace Persons
 {
     class Program
     {
+        private const string DefaultDataFilename = "../../SampleData";
         private static readonly ImporterExporter[] ImporterExporters = new ImporterExporter[]
                         {
                             new JsonImporterExporter() { name = "JSON", description  = "JavaScript Object Notation"},
@@ -18,25 +19,28 @@ namespace Persons
             ImporterExporter importerExporter = GetFileFormatFromUser();
             if (importerExporter == null)
                 return;
-
-            string dataFilename = GetFilenameFromUser();
+            
+            string dataFilename = args[1];
+            string algorithm = args[0];
             if (string.IsNullOrWhiteSpace(dataFilename))
                 return;
 
             // Create from sample gadgets and print them out
-            ThingABobCollection data1 = new ThingABobCollection() { MyImporterExporter = importerExporter, MyDataFile = dataFilename };
-            data1.PrintCollection("original object");
-            data1.MyImporterExporter = importerExporter;
+            PersonMatcher data1 = new PersonMatcher() { importExport = importerExporter, filename = dataFilename, algorithmName = algorithm };
+            
+            data1.importExport = importerExporter;
+            data1.Read();
+            foreach(var person in data1.personList)
+            {
+                foreach (var person1 in data1.personList)
+                {
+                    MatchPair match = new MatchPair(person1, person);
+                    bool method = match.Match(algorithm, data1.personList, data1.matchList);
+                }
+            }
             data1.Write();
 
-            // Read the data file back in and print out the objects
-            ThingABobCollection data2 = new ThingABobCollection() { MyImporterExporter = importerExporter, MyDataFile = dataFilename };
-            data2.Read();
-            data2.PrintCollection("objects in the json collection");
-
-            Console.WriteLine("Type ENTER to exit");
-            Console.WriteLine("");
-            Console.ReadLine();
+            
         }
 
 
@@ -67,19 +71,5 @@ namespace Persons
             return result;       
         }
 
-        private static string GetFilenameFromUser()
-        {
-            string result = null;
-            Console.Write($"Enter data file name or EXIT (default={DefaultDataFilename})? ");
-            string response = Console.ReadLine()?.Trim();
-
-            if (string.IsNullOrWhiteSpace(response))
-                response = DefaultDataFilename;
-
-            if (response != "EXIT")
-                result = response;
-
-            return result;
-        }
     }
 }

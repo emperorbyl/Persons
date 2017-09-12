@@ -10,8 +10,7 @@ namespace Persons
     {
         private Person personA;
         private Person personB;
-        private List<MatchPair> matchList = new List<MatchPair>();
-        bool Match(string algorithmName, List<Person> personList)
+        public bool Match(string algorithmName, List<Person> personList, List<MatchPair> matchList)
         {
             bool match = false;
             if (!string.IsNullOrEmpty(algorithmName))
@@ -38,7 +37,7 @@ namespace Persons
             }
             return match;
         }
-        MatchPair(Person person1, Person person2)
+        public MatchPair(Person person1, Person person2)
         {
             personA = person1;
             personB = person2;
