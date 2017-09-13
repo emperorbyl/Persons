@@ -11,7 +11,7 @@ namespace Persons
         public string name { get; set; }
         public string description { get; set; }
         public abstract void Read(List<Person> context, string filename);
-        public abstract void Write(List<MatchPair> context, string filename, string output = null);
+        public abstract void Write(List<MatchPair> context, string filename = null);
         protected string AppendExtension(string filename, string extension)
         {
             if (string.IsNullOrWhiteSpace(extension))

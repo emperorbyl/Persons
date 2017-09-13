@@ -16,7 +16,7 @@ namespace Persons
         public string outputFile { get; set; }
         public void Write()
         {
-            importExport?.Write(matchList, filename, outputFile);
+            importExport?.Write(matchList, outputFile);
         }
 
         public void Read()

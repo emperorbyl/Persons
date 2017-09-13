@@ -8,39 +8,27 @@ namespace Persons
 {
     public class MatchPair
     {
-        private Person personA;
-        private Person personB;
-        public bool Match(string algorithmName, List<Person> personList, List<MatchPair> matchList)
+        public Person personA { get; set; }
+        public Person personB { get; set; }
+        public bool Match(string algorithmName, Person person1, Person person2)
         {
             bool match = false;
             if (!string.IsNullOrEmpty(algorithmName))
             {
                 try
                 {
-                    for (int i = 0; i < personList.Count; i++)
-                    {
-                        for (int j = i; j < personList.Count; j++)
-                        {
-                            Person person1 = personList[i];
-                            Person person2 = personList[j];
-                            if ((algorithmName == "One" || algorithmName == "1") && person1.firstName.Equals(person2.firstName) && person1.middleName.Equals(person2.middleName) && person1.lastName.Equals(person2.lastName))
-                                match = true;
-                            if ((algorithmName == "Two" || algorithmName == "2") && person1.motherFirstName.Equals(person2.motherFirstName) && person1.motherMiddleName.Equals(person2.motherMiddleName) && person1.motherLastName.Equals(person2.motherLastName) && person1.birthDay == person2.birthDay && person1.birthMonth == person2.birthMonth && person1.birthYear == person2.birthYear)
-                                match = true;
-                            if ((algorithmName == "Three" || algorithmName == "3") && person1.socialSecurityNumber == person2.socialSecurityNumber)
-                                match = true;
-                            if (match)
-                            {
-                                MatchPair matchPair = new MatchPair(person1, personB);
-                                matchList.Add(matchPair);
-                            }
-                        }
-                    }
+                    if ((algorithmName == "One" || algorithmName == "1") && person1.FirstName.Equals(person2.FirstName) && person1.MiddleName.Equals(person2.MiddleName))// && person1.LastName.Equals(person2.LastName))
+                        match = true;
+                    else if ((algorithmName == "Two" || algorithmName == "2") && person1.MotherFirstName.Equals(person2.MotherFirstName) && person1.MotherMiddleName.Equals(person2.MotherMiddleName) && person1.MotherLastName.Equals(person2.MotherLastName) && person1.BirthDay == person2.BirthDay && person1.BirthMonth == person2.BirthMonth && person1.BirthYear == person2.BirthYear)
+                        match = true;
+                    else if ((algorithmName == "Three" || algorithmName == "3") && person1.SocialSecurityNumber == person2.SocialSecurityNumber)
+                        match = true;
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
-                    Console.Write("There is an invalid value. Please check the values for the method tried.");
+                    Console.Write("There is an invalid value. Please check the values for the method tried.\n");
                 }
+
             }
             return match;
         }

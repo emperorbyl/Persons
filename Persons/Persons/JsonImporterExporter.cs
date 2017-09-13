@@ -23,11 +23,12 @@ namespace Persons
             }
 
         }
-        public override void Write(List<MatchPair> context, string filename, string outputFile = null)
+        public override void Write(List<MatchPair> context, string filename)
         {
-            filename = AppendExtension(filename, "json");
+            
             StreamWriter writer = new StreamWriter(filename);
-            JsonSerializer.WriteObject(writer.BaseStream, context);
+            foreach (var match in context)
+                writer.WriteLine(match.personA.ObjectId + "," + match.personB.ObjectId + "\n");
             writer.Close();
         }
         

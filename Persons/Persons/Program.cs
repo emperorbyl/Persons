@@ -22,11 +22,13 @@ namespace Persons
             
             string dataFilename = args[1];
             string algorithm = args[0];
-            if (string.IsNullOrWhiteSpace(dataFilename))
+            string outFile = "";
+            if (args.Count() > 2)
+                outFile = args[2];
+            if (string.IsNullOrWhiteSpace(dataFilename) || algorithm == null)
                 return;
-
-            // Create from sample gadgets and print them out
-            PersonMatcher data1 = new PersonMatcher() { importExport = importerExporter, filename = dataFilename, algorithmName = algorithm };
+            
+            PersonMatcher data1 = new PersonMatcher() { importExport = importerExporter, filename = dataFilename, algorithmName = algorithm , outputFile = outFile};
             
             data1.importExport = importerExporter;
             data1.Read();
@@ -35,13 +37,28 @@ namespace Persons
             {
                 foreach (var person1 in data1.personList)
                 {
-                    MatchPair match = new MatchPair(person1, person);
-                    method = match.Match(algorithm, data1.personList, data1.matchList);
+                    if (person1.ObjectId != person.ObjectId)
+                    {
+                        MatchPair match = new MatchPair(person1, person);
+                        method = match.Match(algorithm, person1, person);
+                        if (method && !data1.matchList.Contains(match))
+                            data1.matchList.Add(match);
+                    }
                 }
             }
-            if(method)
+            if (data1.matchList.Count > 0 && !string.IsNullOrEmpty(outFile))
                 data1.Write();
-
+            else if(method && string.IsNullOrEmpty(outFile))
+            {
+                foreach (var match in data1.matchList)
+                {
+                    Console.Write("Match:\n");
+                    Console.Write("ID=" + match.personA.ObjectId.ToString() + ", Name=" + match.personA.FirstName + " " + match.personA.MiddleName + " " + match.personA.LastName + ", BirthDate = " + match.personA.BirthMonth.ToString() + "/" + match.personA.BirthDay.ToString() + "/" + match.personA.BirthYear.ToString() + "\n");
+                    Console.Write("ID=" + match.personB.ObjectId.ToString() + ", Name=" + match.personB.FirstName + " " + match.personB.MiddleName + " " + match.personB.LastName + ", BirthDate = " + match.personB.BirthMonth.ToString() + "/" + match.personB.BirthDay.ToString() + "/" + match.personB.BirthYear.ToString() + "\n");
+                }
+            }
+            else
+                Console.Write("There are no matches in this list.");
             
         }
 
