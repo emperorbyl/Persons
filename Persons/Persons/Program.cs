@@ -30,15 +30,17 @@ namespace Persons
             
             data1.importExport = importerExporter;
             data1.Read();
+            bool method = false;
             foreach(var person in data1.personList)
             {
                 foreach (var person1 in data1.personList)
                 {
                     MatchPair match = new MatchPair(person1, person);
-                    bool method = match.Match(algorithm, data1.personList, data1.matchList);
+                    method = match.Match(algorithm, data1.personList, data1.matchList);
                 }
             }
-            data1.Write();
+            if(method)
+                data1.Write();
 
             
         }
@@ -54,7 +56,6 @@ namespace Persons
                     Console.WriteLine($"\t{importerExporter.name.PadRight(10)}{importerExporter.description}");
                 Console.Write("Specific which format type you want to work or EXIT? ");
                 string response = Console.ReadLine()?.Trim().ToUpper();
-
                 if (response == "EXIT")
                     return null;
 
