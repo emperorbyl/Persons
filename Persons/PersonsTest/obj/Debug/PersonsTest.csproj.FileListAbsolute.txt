@@ -1,0 +1,8 @@
+C:\Users\benja\OneDrive\Documentos\GitHub\CS5700\Persons\Persons\PersonsTest\bin\Debug\PersonsTest.dll
+C:\Users\benja\OneDrive\Documentos\GitHub\CS5700\Persons\Persons\PersonsTest\bin\Debug\PersonsTest.pdb
+C:\Users\benja\OneDrive\Documentos\GitHub\CS5700\Persons\Persons\PersonsTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\benja\OneDrive\Documentos\GitHub\CS5700\Persons\Persons\PersonsTest\bin\Debug\Persons.exe
+C:\Users\benja\OneDrive\Documentos\GitHub\CS5700\Persons\Persons\PersonsTest\bin\Debug\Persons.pdb
+C:\Users\benja\OneDrive\Documentos\GitHub\CS5700\Persons\Persons\PersonsTest\obj\Debug\PersonsTest.csprojResolveAssemblyReference.cache
+C:\Users\benja\OneDrive\Documentos\GitHub\CS5700\Persons\Persons\PersonsTest\obj\Debug\PersonsTest.dll
+C:\Users\benja\OneDrive\Documentos\GitHub\CS5700\Persons\Persons\PersonsTest\obj\Debug\PersonsTest.pdb
